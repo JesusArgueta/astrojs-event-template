@@ -1,0 +1,127 @@
+---
+// src/pages/contacto.astro
+// Verificado que el archivo está en UTF-8
+const motivos = [
+  "Asistencia al Evento",
+  "Voluntariado para el Evento",
+  "Patrocinio Empresarial",
+  "Participación de Comercios Locales", 
+  "Participación de artistas locales",
+  "Donaciones para Sorteos o Venta"
+];
+
+// Configuración del formulario
+const formAction = "https://formspree.io/f/mgvwvlar"; // Cambia esto por tu endpoint real
+const formMethod = "POST";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="min-h-screen bg-gray-900">
+  <!-- Contenedor principal con imagen de fondo -->
+  <div 
+    class="min-h-screen flex items-center justify-center p-4"
+    style="background-image: url('../assets/images/banner/banner.jpg'); background-size: cover; background-position: center; background-attachment: fixed;"
+  >
+    <!-- Overlay para mejorar legibilidad -->
+    <div class="absolute inset-0 bg-black/60"></div>
+    
+    <!-- Tu sección de formulario (añadí z-10 para que esté sobre el overlay) -->
+    <section class="max-w-xl mx-auto mt-16 mb-16 p-8 rounded-2xl shadow-lg bg-black/80 border border-customYellow backdrop-blur-lg">
+    <h1 class="text-4xl font-bold mb-4 text-customYellow drop-shadow">Formulario de contacto</h1>
+    <p class="mb-8 text-gray-300 text-lg">¿Quieres participar o colaborar? Rellena el formulario y nos pondremos en contacto contigo.</p>
+
+    <form 
+      action={formAction}
+      method={formMethod}
+      class="flex flex-col gap-6"
+      accept-charset="UTF-8"
+      enctype="multipart/form-data"
+    >
+      <!-- Campo Motivo -->
+      <div>
+        <label for="motivo" class="block font-semibold mb-2 text-customYellow">Motivo del contacto</label>
+        <select 
+          id="motivo"
+          name="motivo"
+          required
+          class="w-full p-3 rounded-lg border border-customYellow bg-zinc-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-customYellow"
+        >
+          <option value="">Selecciona una opción</option>
+          {motivos.map((motivo) => (
+            <option value={motivo}>{motivo}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Campo Nombre -->
+      <div>
+        <label for="nombre" class="block font-semibold mb-2 text-customYellow">Nombre completo</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          required
+          class="w-full p-3 rounded-lg border border-customYellow bg-zinc-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-customYellow"
+          pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+          title="Solo letras y espacios"
+        />
+      </div>
+
+      <!-- Campo Email -->
+      <div>
+        <label for="email" class="block font-semibold mb-2 text-customYellow">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full p-3 rounded-lg border border-customYellow bg-zinc-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-customYellow"
+        />
+      </div>
+
+      <!-- Campo Teléfono -->
+      <div>
+        <label for="telefono" class="block font-semibold mb-2 text-customYellow">Número de móvil</label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          required
+          class="w-full p-3 rounded-lg border border-customYellow bg-zinc-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-customYellow"
+          pattern="[0-9]{9}"
+          title="9 dígitos sin espacios"
+        />
+      </div>
+
+      <!-- Campo Mensaje -->
+      <div>
+        <label for="mensaje" class="block font-semibold mb-2 text-customYellow">Mensaje</label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          rows="4"
+          class="w-full p-3 rounded-lg border border-customYellow bg-zinc-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-customYellow"
+          placeholder="Escribe aquí tu consulta o propuesta..."
+        ></textarea>
+      </div>
+
+      <div class="text-xs text-gray-400 mt-2">
+        Tus datos serán tratados de forma confidencial y solo para fines relacionados con el evento.
+      </div>
+
+      <button
+        type="submit"
+        class="bg-customYellow text-black font-bold py-3 px-8 rounded-lg hover:bg-customYellowHover transition-colors mt-4 shadow-lg"
+      >
+        Enviar
+      </button>
+    </form>
+  </section>
+  </div>
+</body>
+</html>

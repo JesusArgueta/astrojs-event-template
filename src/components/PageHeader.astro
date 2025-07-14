@@ -3,36 +3,55 @@ import Icon from "astro-icon";
 ---
 
 <div
-  class=" relative z-10 py-6 px-6 flex justify-between"
+  class="relative z-10 py-6 px-6 flex items-center justify-between"
   transition:name="page header"
   transition:persist
 >
-  <a
-  href="/"
-  aria-label="go back to home page"
-  class="text-2xl font-bold text-white"
-  >
-  Astro Event
-  </a>
-  <nav>
-    <ul class="flex space-x-8 mt-1">
-      <li><a href="/" class="hover:text-customYellow">Home</a></li>
-      <li><a href="/concert" class="hover:text-customYellow">Concert</a></li>
-      <li><a href="/arts" class="hover:text-customYellow">Art</a></li>
-      <li><a href="/festival" class="hover:text-customYellow">Festival</a></li>
-      
-      <li><a href="/sport" class="hover:text-customYellow">Sport</a></li>
-    </ul>
-  </nav>
-  <div class="mt-1">
+  <div class="flex items-center gap-2">
     <a
-      target="_blank"
-      aria-label={"github repository"}
-      href="https://github.com/99points/astrojs-event-template"
-      class="text-gray-200 hover:text-white"
+      href="/"
+      aria-label="Ir a la página principal"
+      class="flex items-center gap-2 text-2xl font-bold text-white"
     >
-      <Icon name="mdi:github" class="h-7 w-7" />
+      <img src="../assets/images/Logo/LOGO_NEGATIVO.png" alt="Logo Negativo" class="h-14 w-14 dark:inline-block" />
+      <span>LA SONRISA FESTIVAL</span>
     </a>
   </div>
-
+  <nav class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <ul class="flex space-x-8">
+      <li><a href="/" class="hover:text-customYellow">Inicio</a></li>
+      <li><a href="/concert" class="hover:text-customYellow">Ediciones</a></li>
+      <li><a href="/arts" class="hover:text-customYellow">LASA</a></li>
+      <li><a href="/festival" class="hover:text-customYellow">Colaboradores</a></li>
+      <li><a href="/contact" class="hover:text-customYellow">Únete</a></li>
+    </ul>
+  </nav>
+  <div class="items-center flex justify-between w-full md:w-auto">
+    <div class="flex space-x-4">
+      <a
+      target="_blank"
+      aria-label={"Instagram"}
+      href="https://instagram.com/lasonrisafestival"
+      class="text-gray-200 hover:text-white"
+    >
+      <Icon name="mdi:instagram" class="h-7 w-7" />
+    </a>
+    <a
+      target="_blank"
+      aria-label={"Linkedin"}
+      href="https://www.linkedin.com/in/sonrisa-festival-428235239"
+      class="text-gray-200 hover:text-white"
+    >
+      <Icon name="mdi:linkedin" class="h-7 w-7" />
+    </a>
+    <a
+      target="_blank"
+      aria-label={"Correo electrónico"}
+      href="mailto:lasonrisademayo@gmail.com"
+      class="text-gray-200 hover:text-white"
+    >
+      <Icon name="mdi:at" class="h-7 w-7" />
+    </a>
+    </div>   
+  </div>
 </div>

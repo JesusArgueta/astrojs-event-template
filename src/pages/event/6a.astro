@@ -19,7 +19,7 @@ export function getStaticPaths() {
   }));
 }
 
-const playlist = allPlaylists.find((playlist) => playlist.id === id);
+const playlist = allPlaylists.find((playlist) => playlist.id === "6");
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
@@ -40,33 +40,23 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
           transition:name=`playlist ${playlist?.id} image`
         />
       </div>
-      <div class="flex flex-col justify-between">
-        <div class="flex flex-1 items-end"></div>
+      <div class="flex flex-col justify-center h-full">
         <div class="">
-          <h1 class="title-clamp font-bold block">
-            {playlist?.title}
-            <span transition:name=`playlist ${playlist?.id} title`></span>
-          </h1>
-          <p>
-            {playlist?.description}
-          </p>
-        </div>
-        <div class="flex-1 flex items-end">
-          <div class="text-sm">
-            <EventAddress artists={playlist?.artists || []} />
-            <div class="mt-1">
-              <span class="font-semibold"> {playlist?.date}</span
-              >
-            </div>
-          </div>
-        </div>
+        <h1 class="title-clamp font-bold block mb-4">
+          {playlist?.title}
+          <span transition:name={`playlist ${playlist?.id} title`}></span>
+        </h1>
+        <p class="mt-2">
+          {playlist?.description}
+        </p>
       </div>
+    </div>
     </div>
 
     <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100 ">
       <div class="flex gap-1 items-center">
         <div class="ml-4" >
-          <a href="#" class="bg-customYellow text-black py-2 px-6 hover:bg-customYellowHover">Buy Tickets</a>
+          <a href="#" class="bg-customYellow text-black py-2 px-6 hover:bg-customYellowHover">HOLAAA sorteoooooooo</a>
         </div>
         <LikeButton />
         <DotsButton />

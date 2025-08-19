@@ -1,0 +1,203 @@
+---
+// src/components/EdicionesAnteriores.astro
+
+// Datos de las ediciones
+const ediciones = [
+  {
+    titulo: "Edición 2023",
+    descripcion: "Una edición inolvidable con música, arte y solidaridad.",
+    imagenes: [
+      "/images/edicion-2023-1.jpg",
+      "/images/edicion-2023-2.jpg",
+      "/images/edicion-2023-3.jpg",
+      "/images/edicion-2023-3.jpg",
+      "/images/edicion-2023-3.jpg",
+      "/images/edicion-2023-3.jpg",
+      "/images/edicion-2023-3.jpg",
+      "/images/edicion-2023-3.jpg",
+    ],
+  },
+  {
+    titulo: "Edición 2022",
+    descripcion: "Celebramos la unión y el compromiso con la comunidad.",
+    imagenes: [
+      "/images/edicion-2022-1.jpg",
+      "/images/edicion-2022-2.jpg",
+      "/images/edicion-2022-3.jpg",
+      "/images/edicion-2022-3.jpg",
+      "/images/edicion-2022-3.jpg",
+      "/images/edicion-2022-3.jpg",
+      "/images/edicion-2022-3.jpg",
+      "/images/edicion-2022-3.jpg",
+      "/images/edicion-2022-3.jpg",
+    ],
+  },
+  {
+    titulo: "Edición 2021",
+    descripcion: "El inicio de un evento lleno de esperanza y alegría.",
+    imagenes: [
+      "/images/edicion-2021-1.jpg",
+      "/images/edicion-2021-2.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+      "/images/edicion-2021-3.jpg",
+    ],
+  },
+];
+---
+<!-- Estilos mejorados -->
+<style>
+  .scroll-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    color: white;
+    position: relative;
+  }
+  
+  .slider-container {
+    position: relative;
+    margin: 2rem 0;
+  }
+  
+  .slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+  }
+  
+  .slide {
+    scroll-snap-align: start;
+    flex: 0 0 300px;
+    background: #1e293b;
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+  
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(30, 41, 59, 0.8);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+  }
+  
+  .scroll-button:hover {
+    background: rgba(30, 41, 59, 1);
+  }
+  
+  .scroll-button.prev {
+    left: 10px;
+  }
+  
+  .scroll-button.next {
+    right: 10px;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Ocultar botones cuando no hay contenido para desplazar */
+  .scroll-button.hidden {
+    display: none;
+  }
+</style>
+
+<!-- HTML -->
+<section class="text-center py-24 bg-black relative">
+  <div class="absolute inset-0 w-full z-10 bg-black opacity-50"></div>
+  <div class="relative z-10 w-full bg-gradient-to-br from-black via-gray-900 to-yellow-900 rounded-xl shadow-lg p-10 border border-yellow-700/30">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-customYellow drop-shadow-lg mb-8 tracking-tight">
+      Ediciones Anteriores
+    </h2>
+    <div class="mt-4 text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto mb-12">
+      Revive los mejores momentos de cada edición. Música, arte y solidaridad en imágenes.
+    </div>
+    {ediciones.map((edicion, index) => {
+      const sliderId = `slider-${index}`;
+      return (
+        <article class="mb-16">
+          <h3 class="text-2xl font-bold mb-2 text-yellow-300">{edicion.titulo}</h3>
+          <p class="text-gray-300 mb-6">{edicion.descripcion}</p>
+          <div class="slider-container">
+            <button
+              class="scroll-button prev"
+              onclick={`scrollSlider(${index}, -300)`}
+              aria-label="Imágenes anteriores"
+            >
+              &larr;
+            </button>
+            <div
+              id={sliderId}
+              class="slider scrollbar-hide"
+            >
+              {edicion.imagenes.map((imagen, imgIndex) => (
+                <div class="slide">
+                  <img
+                    src={imagen}
+                    alt={`${edicion.titulo} - Imagen ${imgIndex + 1}`}
+                    loading="lazy"
+                    width="300"
+                    height="180"
+                  />
+                </div>
+              ))}
+            </div>
+            <button
+              class="scroll-button next"
+              onclick={`scrollSlider(${index}, 300)`}
+              aria-label="Siguientes imágenes"
+            >
+              &rarr;
+            </button>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<script is:inline>
+  // Función global para el scroll
+  function scrollSlider(index, distance) {
+    const slider = document.getElementById('slider-' + index);
+    if (slider) {
+      slider.scrollBy({ 
+        left: distance, 
+        behavior: "smooth" 
+      });
+    }
+  }
+  
+  // Verificar visibilidad de botones al cargar y al hacer scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    // Esta función podría expandirse para ocultar botones 
+    // cuando no hay más contenido para desplazar
+  });
+</script>

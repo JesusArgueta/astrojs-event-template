@@ -1,6 +1,6 @@
 # Event Website Template built with Astro (3.0) 
 
-This project is an event website template built using Astro 3.0 and TailwindCSS. It provides a modern, responsive design ideal for showcasing events, concerts, and festivals. The template is easy to customize and deploy, making it a great starting point for any event-based web project.
+This project is an event website template built using Astro 3.0 and TailwindCSS. It provides a modern, responsive design ideal for showcasing events, edicioness, and festivals. The template is easy to customize and deploy, making it a great starting point for any event-based web project.
 
 You can find this template available at [Astro Official Themes](https://portal.astro.build/themes/astroevent-landing-page/) page.
 

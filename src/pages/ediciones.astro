@@ -1,0 +1,41 @@
+---
+import PageHeader from "../components/PageHeader.astro";
+import PageFooter from "../components/PageFooter.astro";
+
+import CarruselEdiciones from "../components/CarruselEdiciones.astro";
+
+import Layout from "../layouts/Layout.astro";
+import Ticker from "../components/Ticker.astro";
+
+---
+
+<Layout title="Home">
+  <div
+    id="playlist-container"
+    class="relative transition-all duration-1000 bg-context"
+    style="min-height:300px;--context-color:#000000;"
+  >
+    <PageHeader />
+
+    <section class="text-center py-24 bg-black relative">
+        <!-- Black overlay -->
+      <div class="absolute inset-0 w-full z-10  bg-black opacity-50"></div>
+      <img src="/concert.jpg" alt="Background Image" class="absolute inset-0 w-full h-full object-cover opacity-40">
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-customYellow">ACOMPAÑANOS EN NUESTRO RECORRIDO</h1>
+        <p class="mt-4 text-sm md:text-base lg:text-lg text-gray-300 max-w-3xl mx-auto">
+          Echale un vistazo a las ediciones pasadas del festival, donde la música y el arte se unen para crear experiencias inolvidables. Desde conciertos vibrantes hasta exposiciones cautivadoras, cada edición ha dejado una huella única en la comunidad.
+        </p>
+        <div class="mt-8 flex justify-center space-x-4">
+        </div>
+      </div>
+    </section>
+
+    <Ticker />
+
+    <CarruselEdiciones />
+    
+
+  <PageFooter />
+  
+</Layout>

@@ -11,11 +11,11 @@ export interface Playlist {
 export const playlists: Playlist[] = [
   {
     id: "1",
-    title: "ONGS",
+    title: "CAMISETA BETIS FIRMADA",
     color: colors.teal,
     cover:
-      "../assets/images/ONG.jpg",
-    description: "En La Sonrisa Festival colaboran varias ONGs que trabajan incansablemente por el bienestar animal y social en Sevilla. Estas organizaciones dedican sus esfuerzos a rescatar animales en situación de abandono, ofrecerles atención veterinaria y buscarles un hogar responsable. Además, promueven la adopción ética y la concienciación sobre el respeto a todos los seres vivos. Muchas de estas ONGs también desarrollan proyectos de integración comunitaria, educación ambiental y actividades solidarias que involucran a vecinos y voluntarios. Gracias a su labor y compromiso, el festival tiene un impacto positivo en la ciudad, fomenta valores de solidaridad y ayuda a quienes más lo necesitan. Participar en La Sonrisa Festival es también una oportunidad para conocer el trabajo de estas entidades, apoyar sus causas y formar parte de una red de ayuda que transforma vidas.",
+      "../assets/images/sorteos/Camiseta-Betis.png",
+    description: "¿Eres del Betis de corazón? ¡Esta es tu oportunidad! Sortemos una auténtica camiseta oficial del Real Betis Balompié, firmada por los cracks del plantel, para que luzcas con orgullo los colores verde y blanco.",
     },
   {
     id: "2",

@@ -1,6 +1,6 @@
 ---
 
-import { playlists } from "../lib/data";
+import { playlists } from "../lib/sorteos";
 
 ---
 
@@ -15,10 +15,9 @@ import { playlists } from "../lib/data";
         <div class="p-4 w-2/3">
           <h3 class="text-xl font-semibold mb-2" transition:name=`playlist ${event.id} title`>{event.title}</h3>
           <p class="text-sm text-gray-400 mb-4">{event.description}</p>
-          <a href={`/event/${event.id}`} class="bg-customYellow text-gray-900 font-bold py-2 px-4 rounded hover:bg-customYellowHover"
-          transition:name=`playlist ${event.id} box`>
-            BUY TICKET &rarr;
-          </a>
+          <a href="https://www.instagram.com/tu_cuenta_de_instagram/" target="_blank" rel="noopener noreferrer" class="bg-customYellow text-gray-900 font-bold py-2 px-4 rounded hover:bg-customYellowHover">
+            CONTACTAR EN INSTAGRAM &rarr;
+            </a>
         </div>
       </div>
     ))}

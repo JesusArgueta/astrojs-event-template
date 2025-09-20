@@ -20,6 +20,101 @@ export function getStaticPaths() {
 }
 
 const playlist = allPlaylists.find((playlist) => playlist.id === "1");
+
+// Importa el componente ONGCard
+import ONGCard from "../../components/ONGCard.astro";
+
+// Datos de las ONGs
+const ongs = [
+  {
+    name: "La Sonrisa Animal (LASA)",
+    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
+    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    socialLinks: [
+      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
+      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
+      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+    ],
+  },
+  {
+    name: "AIESEC",
+    description: "Organización juvenil que trabaja por los Objetivos de Desarrollo Sostenible y ofrece oportunidades de prácticas y voluntariado en otros países.",
+    image: "/assets/images/Ongs/aiesec.png",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Rotary",
+    description: "Red internacional de clubes de servicio que impulsa proyectos sociales, educativos y comunitarios.",
+    image: "/assets/images/Ongs/rotary.png",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Greenpeace",
+    description: "Movimiento global que lucha por la defensa del medio ambiente y la justicia climática.",
+    image: "/assets/images/Ongs/greenpeace.png",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Ecologistas en Acción",
+    description: "Organización que trabaja en campañas de ecología social y defensa del territorio.",
+    image: "/assets/images/Ongs/ecologistas.png",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Ecometrópolis",
+    description: "Asociación dedicada a la educación ambiental y el fomento de un consumo responsable.",
+    image: "/assets/images/Ongs/ecometropolis.jpg",
+    socialLinks: [
+     
+    ],
+  },{
+    name: "Scouts",
+    description: "movimiento educativo que promueve valores de cooperación, respeto y vida en la naturaleza.",
+    image: "/assets/images/Ongs/scouts.jpg",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Equipo Europa",
+    description: "Asociación juvenil que fomenta la participación ciudadana y la conciencia europea entre jóvenes.",
+    image: "/assets/images/Ongs/equipo_europa.png",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Saber Escuchar",
+    image: "/assets/images/Ongs/ONG.jpg",
+    description: "Proyecto que promueve el acompañamiento emocional y el valor de la escucha activa.",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "Jalea de Mente",
+    description: "Colectivo creativo que impulsa la participación ciudadana a través del arte, la música y las iniciativas culturales.",
+    image: "/assets/images/Ongs/ONG.jpg",
+    socialLinks: [
+     
+    ],
+  },{
+    name: "Sine Domus",
+    description: "Asociación dedicada a apoyar a personas en situación de sin hogar, promoviendo la inclusión y la dignidad.",
+    image: "/assets/images/Ongs/sine_domus.jpg",
+    socialLinks: [
+      
+    ],
+  },{
+    name: "OKPlanet",
+    description: "Organización que trabaja en educación y acción ambiental para cuidar del planeta y fomentar hábitos sostenibles.",
+    image: "/assets/images/Ongs/OKPlanet.png",
+    socialLinks: [
+      
+    ],
+  },
+];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
@@ -29,6 +124,7 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "1");
   >
     <PageHeader />
 
+    <!-- Información del evento -->
     <div
       class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
     >
@@ -42,98 +138,24 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "1");
       </div>
       <div class="flex flex-col justify-center h-full">
         <div class="">
-        <h1 class="title-clamp font-bold block mb-4">
-          {playlist?.title}
-          <span transition:name={`playlist ${playlist?.id} title`}></span>
-        </h1>
-        <p class="mt-2">
-          {playlist?.description}
-        </p>
+          <h1 class="title-clamp font-bold block mb-4">
+            {playlist?.title}
+            <span transition:name={`playlist ${playlist?.id} title`}></span>
+          </h1>
+          <p class="mt-2">
+            {playlist?.description}
+          </p>
+        </div>
       </div>
-    </div>
     </div>
 
-    <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100 ">
-      <div class="flex gap-1 items-center">
-        <div class="ml-4" >
-          <a href="#" class="bg-customYellow text-black py-2 px-6 hover:bg-customYellowHover">HOLAAA ong</a>
-        </div>
-        <LikeButton />
-        <DotsButton />
-      </div>
-      <div class="px-6 pt-4">
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Overview:</h3>
-            <p class="text-gray-400">
-              Experience the ultimate ediciones event, where music comes alive and memories are made. Join us for an unforgettable evening filled with electrifying performances and soul-stirring melodies. Dive into the rhythm and let the music take you on a journey of pure bliss.
-            </p>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Artists Lineup:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>The Echoes</li>
-              <li>Rhythm Masters</li>
-              <li>Harmony Trio</li>
-              <li>Soulful Strings</li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Event Highlights:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>
-                <span class="font-bold">Live Performances:</span> Enjoy captivating live performances from top artists, showcasing a blend of genres that will keep you dancing all night long.
-              </li>
-              <li>
-                <span class="font-bold">Interactive Sessions:</span> Engage with artists in interactive sessions, where you can learn about their music, inspiration, and creative process.
-              </li>
-              <li>
-                <span class="font-bold">Food & Beverages:</span> Savor a variety of delicious food and drink options from our curated selection of vendors, ensuring a delightful culinary experience.
-              </li>
-              <li>
-                <span class="font-bold">Merchandise:</span> Grab exclusive event merchandise, including T-shirts, posters, and memorabilia to remember this extraordinary night.
-              </li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Additional Information:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>
-                <span class="font-bold">Parking:</span> Available on-site with easy access to the venue.
-              </li>
-              <li>
-                <span class="font-bold">Accessibility:</span> The event is accessible to all, with special arrangements for individuals with disabilities.
-              </li>
-              <li>
-                <span class="font-bold">Security:</span> Enhanced security measures will be in place to ensure the safety and well-being of all attendees.
-              </li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Tickets:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>General Admission: $50</li>
-              <li>VIP Pass: $100 (Includes backstage access and meet-and-greet with artists)</li>
-              <li>Early Bird Discounts available until April 30, 2023</li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Contact:</h3>
-            <p class="text-gray-400">
-              For more information, visit our website or contact us at <a href="mailto:info@example.com" class="text-blue-500">info@example.com</a>.
-            </p>
-            <p class="text-gray-400">
-              Join us at Vibe Wave for an evening of unforgettable music, vibrant energy, and lasting memories. Get your tickets now and be part of an extraordinary musical journey!
-            </p>
-          </div>
-        </div>
-        
-        
+    <!-- Sección de ONGs -->
+    <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">ONGs Participantes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {ongs.map((ong) => (
+          <ONGCard {...ong} />
+        ))}
       </div>
     </div>
 
@@ -141,24 +163,13 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "1");
       class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
       style=`--context-color:${playlist?.color.accent}`
     >
-    
       <div
         class="absolute inset-0 bg-gradient-to-t via-transparent from-zinc-900"
       >
       </div>
     </div>
-
-    <!-- Thumbnails -->
-    <!-- <div class="px-6 relative z-10 mt-12 max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold ">OTHER EVENTS</h2>
-      <div class="flex flex-wrap mt-6 gap-4">
-        {morePlaylists.map((playlist) => <BannerEvents playlist={playlist} />)}
-      </div>
-    </div> -->
-
-    <PageFooter />
-
   </div>
+  <PageFooter />
 </Layout>
 
 <style>

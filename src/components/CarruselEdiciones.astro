@@ -4,52 +4,44 @@
 // Datos de las ediciones
 const ediciones = [
   {
-    titulo: "Edición 2023",
-    descripcion: "Una edición inolvidable con música, arte y solidaridad.",
-    imagenes: [
-      "/images/edicion-2023-1.jpg",
-      "/images/edicion-2023-2.jpg",
-      "/images/edicion-2023-3.jpg",
-      "/images/edicion-2023-3.jpg",
-      "/images/edicion-2023-3.jpg",
-      "/images/edicion-2023-3.jpg",
-      "/images/edicion-2023-3.jpg",
-      "/images/edicion-2023-3.jpg",
-    ],
-  },
-  {
-    titulo: "Edición 2022",
-    descripcion: "Celebramos la unión y el compromiso con la comunidad.",
-    imagenes: [
-      "/images/edicion-2022-1.jpg",
-      "/images/edicion-2022-2.jpg",
-      "/images/edicion-2022-3.jpg",
-      "/images/edicion-2022-3.jpg",
-      "/images/edicion-2022-3.jpg",
-      "/images/edicion-2022-3.jpg",
-      "/images/edicion-2022-3.jpg",
-      "/images/edicion-2022-3.jpg",
-      "/images/edicion-2022-3.jpg",
-    ],
-  },
-  {
-    titulo: "Edición 2021",
+    titulo: "Edición 2022 - 15 de Mayo",
     descripcion: "El inicio de un evento lleno de esperanza y alegría.",
     imagenes: [
-      "/images/edicion-2021-1.jpg",
-      "/images/edicion-2021-2.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
-      "/images/edicion-2021-3.jpg",
+      "/assets/images/evento2022/1.jpg",
+      "/assets/images/evento2022/2.jpg",
+      "/assets/images/evento2022/3.jpg",
+      "/assets/images/evento2022/4.jpg",
+      "/assets/images/evento2022/5.jpg",
+      "/assets/images/evento2022/6.jpg",
+      "/assets/images/evento2022/7.jpg",
+      "/assets/images/evento2022/8.jpg",
+      "/assets/images/evento2022/9.jpg",
     ],
   },
+  {
+    titulo: "Edición 2024 - 05 de Octubre",
+    descripcion: "Celebramos la unión y el compromiso con la comunidad. ",
+    imagenes: [
+      "/assets/images/evento2024/5.jpg",
+      "/assets/images/evento2024/1.jpg",
+      "/assets/images/evento2024/2.jpg",
+      "/assets/images/evento2024/3.jpg",
+      "/assets/images/evento2024/4.jpg",
+    ],
+  },
+  {
+    titulo: "Edición 2024 - 22 de Diciembre",
+    descripcion: "Una edición inolvidable con música, arte y solidaridad.",
+    imagenes: [
+      "/assets/images/evento2024/6.jpeg",
+      "/assets/images/evento2024/7.jpeg",
+      "/assets/images/evento2024/8.jpeg",
+      "/assets/images/evento2024/9.jpeg",
+    ],
+  },  
 ];
 ---
+
 <!-- Estilos mejorados -->
 <style>
   .scroll-container {
@@ -59,36 +51,45 @@ const ediciones = [
     color: white;
     position: relative;
   }
-  
+
   .slider-container {
     position: relative;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: 80%; /* Centra el carrusel */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
   }
-  
+
   .slider {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem; /* Aumenta el espacio entre las imágenes */
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 1rem 0;
     scroll-behavior: smooth;
   }
-  
+
   .slide {
-    scroll-snap-align: start;
-    flex: 0 0 300px;
+    scroll-snap-align: center;
+    flex: 0 0 400px; /* Aumenta el tamaño de los cuadrados */
     background: #1e293b;
     border-radius: 0.5rem;
     padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
-  
+
+  .slide:hover {
+    transform: scale(1.03);
+  }
+
   .slide img {
     width: 100%;
-    height: 180px;
+    height: 300px; /* Aumenta la altura de las imágenes */
     object-fit: cover;
     border-radius: 0.25rem;
   }
-  
+
   .scroll-button {
     position: absolute;
     top: 50%;
@@ -96,8 +97,8 @@ const ediciones = [
     background: rgba(30, 41, 59, 0.8);
     color: white;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 50px; /* Aumenta el tamaño del botón */
+    height: 50px; /* Aumenta el tamaño del botón */
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
@@ -106,26 +107,145 @@ const ediciones = [
     justify-content: center;
     transition: background-color 0.3s;
   }
-  
+
   .scroll-button:hover {
     background: rgba(30, 41, 59, 1);
   }
-  
+
   .scroll-button.prev {
-    left: 10px;
+    left: -60px; /* Ajusta la posición del botón izquierdo */
   }
-  
+
   .scroll-button.next {
-    right: 10px;
+    right: -60px; /* Ajusta la posición del botón derecho */
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
-  /* Ocultar botones cuando no hay contenido para desplazar */
-  .scroll-button.hidden {
-    display: none;
+
+  /* Estilos para el modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .modal.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 0.25rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1002;
+  }
+
+  .modal-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+  }
+
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(30, 41, 59, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 1001;
+  }
+
+  .modal-nav:hover {
+    background: rgba(30, 41, 59, 1);
+  }
+
+  .modal-prev {
+    left: 20px;
+  }
+
+  .modal-next {
+    right: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .slide {
+      flex: 0 0 300px;
+    }
+    
+    .slide img {
+      height: 250px;
+    }
+    
+    .modal-nav {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .modal-prev {
+      left: 10px;
+    }
+    
+    .modal-next {
+      right: 10px;
+    }
+    
+    .modal-close {
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
   }
 </style>
 
@@ -139,6 +259,7 @@ const ediciones = [
     <div class="mt-4 text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto mb-12">
       Revive los mejores momentos de cada edición. Música, arte y solidaridad en imágenes.
     </div>
+    
     {ediciones.map((edicion, index) => {
       const sliderId = `slider-${index}`;
       return (
@@ -158,7 +279,7 @@ const ediciones = [
               class="slider scrollbar-hide"
             >
               {edicion.imagenes.map((imagen, imgIndex) => (
-                <div class="slide">
+                <div class="slide" onclick={`openModal('${imagen.replace(/'/g, "\\'")}')`}>
                   <img
                     src={imagen}
                     alt={`${edicion.titulo} - Imagen ${imgIndex + 1}`}
@@ -183,17 +304,174 @@ const ediciones = [
   </div>
 </section>
 
+<!-- Modal para imagen ampliada -->
+<div id="imageModal" class="modal">
+  <button class="modal-close" onclick="closeModal()">&times;</button>
+  <button class="modal-nav modal-prev" onclick="navigateModal(-1)">&larr;</button>
+  <div class="modal-content">
+    <img id="modalImage" src="" alt="Imagen ampliada" />
+  </div>
+  <button class="modal-nav modal-next" onclick="navigateModal(1)">&rarr;</button>
+</div>
+
 <script is:inline>
+  // Variables globales
+  let currentModalIndex = 0;
+  let currentModalImages = [];
+  
+  // Almacenar el estado de los botones para cada slider
+  const sliderStates = {};
+  
+  // Función para verificar los límites del slider
+  function checkSliderBounds(sliderId) {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    
+    const scrollLeft = slider.scrollLeft;
+    const scrollWidth = slider.scrollWidth;
+    const clientWidth = slider.clientWidth;
+    
+    // Encontrar los botones de este slider
+    const sliderContainer = slider.closest('.slider-container');
+    const prevButton = sliderContainer.querySelector('.scroll-button.prev');
+    const nextButton = sliderContainer.querySelector('.scroll-button.next');
+    
+    // Comprobar si estamos al inicio
+    if (scrollLeft <= 10) { // Pequeña tolerancia
+      prevButton.disabled = true;
+      prevButton.style.opacity = '0.5';
+      prevButton.style.cursor = 'not-allowed';
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = '1';
+      prevButton.style.cursor = 'pointer';
+    }
+    
+    // Comprobar si estamos al final
+    if (scrollLeft + clientWidth >= scrollWidth - 10) { // Pequeña tolerancia
+      nextButton.disabled = true;
+      nextButton.style.opacity = '0.5';
+      nextButton.style.cursor = 'not-allowed';
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = '1';
+      nextButton.style.cursor = 'pointer';
+    }
+    
+    // Guardar el estado
+    sliderStates[sliderId] = {
+      atStart: scrollLeft <= 10,
+      atEnd: scrollLeft + clientWidth >= scrollWidth - 10
+    };
+  }
+  
   // Función global para el scroll
   function scrollSlider(index, distance) {
-    const slider = document.getElementById('slider-' + index);
+    const sliderId = 'slider-' + index;
+    const slider = document.getElementById(sliderId);
+    
     if (slider) {
       slider.scrollBy({ 
         left: distance, 
         behavior: "smooth" 
       });
+      
+      // Verificar los límites después de un pequeño retraso
+      setTimeout(() => checkSliderBounds(sliderId), 300);
     }
   }
+  
+  // Inicializar los sliders
+  document.addEventListener('DOMContentLoaded', function() {
+    // Verificar el estado inicial de cada slider
+    ediciones.forEach((_, index) => {
+      const sliderId = 'slider-' + index;
+      setTimeout(() => checkSliderBounds(sliderId), 100);
+    });
+    
+    // Añadir event listener para el scroll manual
+    ediciones.forEach((_, index) => {
+      const sliderId = 'slider-' + index;
+      const slider = document.getElementById(sliderId);
+      if (slider) {
+        slider.addEventListener('scroll', () => checkSliderBounds(sliderId));
+      }
+    });
+  });
+  
+  // Función para abrir el modal
+  function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    
+    modalImage.src = imageSrc;
+    modal.classList.add('open');
+    
+    // Recopilar todas las imágenes del carrusel actual
+    currentModalImages = [];
+    
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, index) => {
+      const img = slide.querySelector('img');
+      if (img) {
+        currentModalImages.push(img.src);
+        
+        if (img.src.includes(imageSrc)) {
+          currentModalIndex = index;
+        }
+      }
+    });
+    
+    // Prevenir el scroll del body cuando el modal está abierto
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Función para cerrar el modal
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('open');
+    
+    // Restaurar el scroll del body
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Función para navegar entre imágenes en el modal
+  function navigateModal(direction) {
+    if (currentModalImages.length === 0) return;
+    
+    currentModalIndex += direction;
+    
+    // Navegación circular
+    if (currentModalIndex < 0) {
+      currentModalIndex = currentModalImages.length - 1;
+    } else if (currentModalIndex >= currentModalImages.length) {
+      currentModalIndex = 0;
+    }
+    
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = currentModalImages[currentModalIndex];
+  }
+  
+  // Cerrar modal con la tecla Escape
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('imageModal');
+    if (modal.classList.contains('open')) {
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowLeft') {
+        navigateModal(-1);
+      } else if (e.key === 'ArrowRight') {
+        navigateModal(1);
+      }
+    }
+  });
+  
+  // Cerrar modal al hacer clic fuera de la imagen
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
   
   // Verificar visibilidad de botones al cargar y al hacer scroll
   document.addEventListener('DOMContentLoaded', function() {

@@ -1,0 +1,43 @@
+---
+// Props que recibirá el componente
+const { name, description, image, socialLinks } = Astro.props;
+---
+
+<div class="relative z-10 bg-gradient-to-br from-black via-gray-900 to-yellow-900 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row w-full mb-8 border border-yellow-700/30 min-h-[300px]">
+  <!-- Imagen -->
+  <div class="relative w-full md:w-1/3 flex-shrink-0">
+    <img
+      src={image}
+      alt={name}
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Contenido -->
+  <div class="p-6 flex flex-col justify-between w-full md:w-2/3">
+    <!-- Título -->
+    <h3 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-customYellow drop-shadow-lg mb-4 tracking-tight">
+      {name}
+    </h3>
+
+    <!-- Descripción -->
+    <p class="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
+      {description}
+    </p>
+
+    <!-- Redes sociales -->
+    <div class="flex space-x-6">
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-customYellow hover:text-yellow-400 text-2xl transition duration-300"
+          aria-label={link.label}
+        >
+          <i class={link.icon}></i>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

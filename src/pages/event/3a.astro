@@ -20,6 +20,43 @@ export function getStaticPaths() {
 }
 
 const playlist = allPlaylists.find((playlist) => playlist.id === "3");
+
+// Importa el componente ONGCard
+import ONGCard from "../../components/ONGCard.astro";
+
+// Datos de las ONGs
+const ongs = [
+  {
+    name: "Aroa",
+    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
+    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    socialLinks: [
+      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
+      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
+      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+    ],
+  },
+  {
+    name: "Arte y Ritmo en Vivo",
+    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
+    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    socialLinks: [
+      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
+      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
+      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+    ],
+  },
+  {
+    name: "Aroa",
+    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
+    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    socialLinks: [
+      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
+      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
+      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+    ],
+  }
+];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
@@ -29,6 +66,7 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "3");
   >
     <PageHeader />
 
+    <!-- Información del evento -->
     <div
       class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
     >
@@ -42,123 +80,52 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "3");
       </div>
       <div class="flex flex-col justify-center h-full">
         <div class="">
-        <h1 class="title-clamp font-bold block mb-4">
-          {playlist?.title}
-          <span transition:name={`playlist ${playlist?.id} title`}></span>
-        </h1>
-        <p class="mt-2">
-          {playlist?.description}
-        </p>
+          <h1 class="title-clamp font-bold block mb-4">
+            {playlist?.title}
+            <span transition:name={`playlist ${playlist?.id} title`}></span>
+          </h1>
+          <p class="mt-2">
+            {playlist?.description}
+          </p>
+        </div>
       </div>
-    </div>
     </div>
 
-    <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100 ">
-      <div class="flex gap-1 items-center">
-        <div class="ml-4" >
-          <a href="#" class="bg-customYellow text-black py-2 px-6 hover:bg-customYellowHover">HOLAAA comida</a>
-        </div>
-        <LikeButton />
-        <DotsButton />
+    <!-- Sección de ONGs -->
+    <!-- <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">Comida y Bebida</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {ongs.map((ong) => (
+          <ONGCard {...ong} />
+        ))}
       </div>
-      <div class="px-6 pt-4">
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Overview:</h3>
-            <p class="text-gray-400">
-              Experience the ultimate ediciones event, where music comes alive and memories are made. Join us for an unforgettable evening filled with electrifying performances and soul-stirring melodies. Dive into the rhythm and let the music take you on a journey of pure bliss.
-            </p>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Artists Lineup:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>The Echoes</li>
-              <li>Rhythm Masters</li>
-              <li>Harmony Trio</li>
-              <li>Soulful Strings</li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Event Highlights:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>
-                <span class="font-bold">Live Performances:</span> Enjoy captivating live performances from top artists, showcasing a blend of genres that will keep you dancing all night long.
-              </li>
-              <li>
-                <span class="font-bold">Interactive Sessions:</span> Engage with artists in interactive sessions, where you can learn about their music, inspiration, and creative process.
-              </li>
-              <li>
-                <span class="font-bold">Food & Beverages:</span> Savor a variety of delicious food and drink options from our curated selection of vendors, ensuring a delightful culinary experience.
-              </li>
-              <li>
-                <span class="font-bold">Merchandise:</span> Grab exclusive event merchandise, including T-shirts, posters, and memorabilia to remember this extraordinary night.
-              </li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Additional Information:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>
-                <span class="font-bold">Parking:</span> Available on-site with easy access to the venue.
-              </li>
-              <li>
-                <span class="font-bold">Accessibility:</span> The event is accessible to all, with special arrangements for individuals with disabilities.
-              </li>
-              <li>
-                <span class="font-bold">Security:</span> Enhanced security measures will be in place to ensure the safety and well-being of all attendees.
-              </li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Tickets:</h3>
-            <ul class="list-disc list-inside text-gray-400">
-              <li>General Admission: $50</li>
-              <li>VIP Pass: $100 (Includes backstage access and meet-and-greet with artists)</li>
-              <li>Early Bird Discounts available until April 30, 2023</li>
-            </ul>
-          </div>
-        
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">Contact:</h3>
-            <p class="text-gray-400">
-              For more information, visit our website or contact us at <a href="mailto:info@example.com" class="text-blue-500">info@example.com</a>.
-            </p>
-            <p class="text-gray-400">
-              Join us at Vibe Wave for an evening of unforgettable music, vibrant energy, and lasting memories. Get your tickets now and be part of an extraordinary musical journey!
-            </p>
-          </div>
-        </div>
-        
-        
-      </div>
-    </div>
+    </div> -->
+
+    <div class="px-6 py-12 text-center">
+  <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
+  <p class="text-lg text-gray-300 mb-8">
+    Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
+  </p>
+  <div class="flex justify-center">
+    <img
+      src="/assets/images/perro_trabajando.jpg" 
+      alt="Perro gracioso esperando"
+      class="rounded-lg shadow-lg max-w-md"
+    />
+  </div>
+</div>
 
     <div
       class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
       style=`--context-color:${playlist?.color.accent}`
     >
-    
       <div
         class="absolute inset-0 bg-gradient-to-t via-transparent from-zinc-900"
       >
       </div>
     </div>
-
-    <!-- Thumbnails -->
-    <!-- <div class="px-6 relative z-10 mt-12 max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold ">OTHER EVENTS</h2>
-      <div class="flex flex-wrap mt-6 gap-4">
-        {morePlaylists.map((playlist) => <BannerEvents playlist={playlist} />)}
-      </div>
-    </div> -->
-
-    <PageFooter />
-
   </div>
+  <PageFooter />
 </Layout>
 
 <style>

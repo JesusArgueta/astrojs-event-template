@@ -50,7 +50,7 @@ export const playlists: Playlist[] = [
     title: "Sorteos Solidarios",
     color: colors.pink,
     cover:
-      "../assets/images/EQUIPO_VOLUNTARIO.jpeg",
+      "../assets/images/sorteo.jpeg",
     description: "En La Sonrisa Festival nunca faltan las sorpresas ✨. Muy pronto anunciaremos los sorteos de esta edición, con premios donados por diferentes entidades y comercios locales. Además, resolveremos los sorteos pendientes de la edición anterior, así que… ¡permanece atent@ a nuestro Instagram @lasonrisafestival! 📲",},
 ];
 

@@ -50,7 +50,7 @@ export const playlists: Playlist[] = [
     title: "SORTEOS",
     color: colors.pink,
     cover:
-      "../assets/images/EQUIPO_VOLUNTARIO.jpeg",
+      "../assets/images/sorteo.jpeg",
     description: "Los sorteos de La Sonrisa Festival son una oportunidad única para ganar premios increíbles mientras apoyas una buena causa. Participar es muy fácil: solo tienes que adquirir tu boleto en los puestos habilitados y estar atento a los anuncios durante el evento. Todos los fondos recaudados a través de los sorteos se destinarán a las ONGs colaboradoras, ayudando a los animales rescatados y promoviendo el bienestar animal. No te pierdas la oportunidad de ganar y contribuir al mismo tiempo. ¡Te esperamos en La Sonrisa Festival!",},
 ];
 

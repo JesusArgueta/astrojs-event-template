@@ -1,15 +1,10 @@
 ---
 const { id } = Astro.params;
-import DotsButton from "../../components/DotsButton.astro";
-import EventAddress from "../../components/EventAddress.astro";
-import LikeButton from "../../components/LikeButton.astro";
+
 import PageHeader from "../../components/PageHeader.astro";
 import Layout from "../../layouts/Layout.astro";
 import { allPlaylists } from "../../lib/data";
 import PageFooter from "../../components/PageFooter.astro";
-
-import BannerEvents from "../../components/BannerEvents.astro";
-import { playlists, morePlaylists } from "../../lib/data";
 
 export function getStaticPaths() {
   return allPlaylists.map((playlist) => ({
@@ -24,43 +19,126 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "4");
 // Importa el componente ONGCard
 import ONGCard from "../../components/ONGCard.astro";
 
-// Datos de las ONGs
-const ongs = [
+// Datos de los puestos
+const puestos = [
   {
-    name: "Adopta un Gatito Rescatado",
-    description: "Conocerás su labor y podrás apoyarles para seguir cuidando y buscando hogar a más felinos.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Stand de cartas magic y artículos coleccionables",
+    description:
+      "Mayormente tengo productos sellados de Magic, Pokemon y otros TCG (juegos de cartas coleccionables) y además de cartas sueltas y accesorios. Tengo también artículos de Beyblade X. ",
+    image: "/assets/images/puestos/48.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
-    ],
-  },{
-    name: "La Sonrisa Animal (LASA):",
-    description: "Nuestra protectora, con productos solidarios para colaborar directamente con el refugio.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
-    socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
-    ],
-  },{
-    name: "Barzuuart",
-    description: "Ilustraciones originales llenas de arte y personalidad.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
-    socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+      {
+        href: "https://www.instagram.com/pmcl3",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
     ],
   },
-  
+  {
+    name: "Cutey ",
+    description:
+      "Soy ilustradora, el día 19 estaré con mi puesto en el evento benéfico de La Sonrisa Festival  Llevaré prints llenos de color y pegatinas para decorar tus libretas, también unas pinturas originales y mi nuevo mini-zine para colorear. Todo hecho con muucho amor. Cada compra apoya y recauda ingresos para la protectora LASA, quienes ayudan a miles de perros abandonados cada año.  No solo te llevas arte, ¡también estarás aportando a algo muy bonito! Nos vemos allí :)",
+    image: "/assets/images/puestos/FINANCIADOR 1 2025.png",
+    socialLinks: [
+      {
+        href: "https://www.instagram.com/barzuuart",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+      {
+        href: "https://x.com/barzuuart",
+        icon: "fab fa-twitter",
+        label: "X",
+      },
+    ],
+  },
+  {
+    name: "Adopta un Gatito Rescatado ",
+    description:
+      "Celia y su equipo lideran esta iniciativa nacida en octubre de 2024. Gestionan adopciones, transportes y recaudan fondos para gastos veterinarios y castraciones de gatos en San José del Valle (Cádiz), colaborando con ZAMPE. Venden artículos handmade (marcapáginas, flores, joyería) para financiar rescates. Síguenos en @adoptaungatitorescatado_ y ayuda a dar una segunda oportunidad a cada gatito. ¡Juntos podemos hacer la diferencia! 🐱💕",  
+    image: "/assets/images/puestos/49.png",
+    socialLinks: [
+      {
+        href: "https://www.instagram.com/adoptaungatitorescatado_",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+    ],
+  },
+  {
+    name: "Vanesa donaciones",
+    description:
+      "Soy Vanesa Herzog. Mi puesto sería de chapas, pendientes, collares, pañuelos ,peluches y cosas pequeñitas(todas donadas) Todas a precio único (2€) y recaudación integra para Lasa.",  
+    image: "/assets/images/puestos/50.png",
+    socialLinks: [
+      
+    ],
+  },
+  {
+    name: "Lucilla pintacaras",
+    description:
+    "Como artista, me dedico al teatro y a las artes plásticas. Para la ocasión he pensado que podría ser atractivo ofrecer un puesto de Pinta Caras, tanto para niñ@s como para adult@s con ganas de divertirse! Yo llevaría todo el material necesario: pinturas, pinceles, espejo, mesita y sillas para trabajar y para que se siente la persona que pinto. Para la ocasión propondría sobre todo pinturas de animalitos, aunque puedo pintar con temas de fantasías y tratar de satisfacer lo que desee la persona que se pinta! Cobraría algo simbólico, entre las 3 y las 5 € según el tipo de dibujo que se me pida.",  
+    image: "/assets/images/puestos/FINANCIADOR 1 2025 (1).png",
+    socialLinks: [
+      {
+        href: "https://www.instagram.com/luci.da24",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+    ],
+  },
+  {
+    name: "Pichimori",
+    description:
+    "Venderé objetos hechos con arcilla de secado al aire, arcilla polimérica y resina epoxi. Además de ropa. ",
+    image: "/assets/images/puestos/FINANCIADOR 1 2025 (4).png",
+    socialLinks: [
+      {
+        href: "https://www.instagram.com/pichimori",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+    ],
+  },
+  {
+    name: "El ropero de Ayrin",
+    description:
+    "Irene de 'El ropero de Ayrin', me dedico a la venta principalmente de ropa de segunda mano, pero tambien vendo libros y otros artículos, me ofrezco a montar un puestecito para vender y sacar un donativo para los animalitos, concienciar el impacto medioambiental que tiene la industrial textil en el planeta y con ello los animales.Hablaré en el festival de Fast fashion",
+    image: "/assets/images/puestos/FINANCIADOR 1 2025 (2).png",
+    socialLinks: [
+      {
+        href: "https://www.instagram.com/elroperodeayrin",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+      {
+        href: "https://www.vinted.es/member/27584401",
+        icon: "fas fa-tshirt", // o "fas fa-shopping-bag"
+        label: "Vinted",
+      },
+      {
+        href: "https://es.wallapop.com/wall", 
+        icon: "fas fa-mobile-alt", // o "fas fa-shopping-cart"
+        label: "Wallapop",
+      },
+      {
+        href: "https://www.milanuncios.com/mis-anuncios/",
+        icon: "fas fa-newspaper", // o "fas fa-ad"
+        label: "Milanuncios",
+      },
+      {
+        href: "https://www.vinted.es/member/39712748",
+        icon: "fas fa-book",
+        label: "Vinted Libros",
+      }
+    ],
+  },
 ];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
   <div
-    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden "
+    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden"
     transition:name=`playlist ${playlist?.id} box`
   >
     <PageHeader />
@@ -90,32 +168,35 @@ const ongs = [
       </div>
     </div>
 
-    <!-- Sección de ONGs -->
-    <!-- <div class="px-6 py-12">
-      <h2 class="text-4xl font-bold text-customYellow mb-8">Estos son algunos de los puestos confirmados:</h2>
+    <!-- Sección de puestos -->
+    <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">
+        Estos son algunos de los puestos confirmados:
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {ongs.map((ong) => (
-          <ONGCard {...ong} />
-        ))}
+        {puestos.map((puesto) => <ONGCard {...puesto} />)}
+      </div>
+    </div>
+
+    <!-- <div class="px-6 py-12 text-center">
+      <h2 class="text-4xl font-bold text-customYellow mb-6">
+        Estamos trabajando en ello
+      </h2>
+      <p class="text-lg text-gray-300 mb-8">
+        Estamos preparando esta sección para ti. Mientras tanto, disfruta de
+        esta imagen de un perro gracioso 🐶.
+      </p>
+      <div class="flex justify-center">
+        <img
+          src="/assets/images/perro_trabajando.jpg"
+          alt="Perro gracioso esperando"
+          class="rounded-lg shadow-lg max-w-md"
+        />
       </div>
     </div> -->
 
-    <div class="px-6 py-12 text-center">
-  <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
-  <p class="text-lg text-gray-300 mb-8">
-    Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
-  </p>
-  <div class="flex justify-center">
-    <img
-      src="/assets/images/perro_trabajando.jpg" 
-      alt="Perro gracioso esperando"
-      class="rounded-lg shadow-lg max-w-md"
-    />
-  </div>
-</div>
-
     <div
-      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
+      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b"
       style=`--context-color:${playlist?.color.accent}`
     >
       <div

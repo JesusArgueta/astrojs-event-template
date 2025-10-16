@@ -12,18 +12,22 @@ import { playlists } from "../lib/marcas";
         <div class="relative w-1/3">
           <img src={event.cover} alt={event.title} class="w-full h-full object-cover" transition:name=`playlist ${event.id} image` />
         </div>
-        <div class="p-4 w-2/3">
-          <h3 class="text-xl font-semibold mb-2" transition:name=`playlist ${event.id} title`>{event.title}</h3>
-          <p class="text-sm text-gray-400 mb-4">{event.description}</p>
-          <a 
-            href={event.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="bg-customYellow text-gray-900 font-bold py-2 px-4 rounded hover:bg-customYellowHover"
-            transition:name={`playlist ${event.link} box`}
-          >
-            SITIO WEB &rarr;
-          </a>
+        <div class="p-4 w-2/3 flex flex-col justify-between">
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold mb-2" transition:name={`playlist ${event.id} title`}>{event.title}</h3>
+            <p class="text-sm text-gray-400 mb-4">{event.description}</p>
+          </div>
+          {event.link && event.link.trim() ? (
+            <a 
+              href={event.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="bg-customYellow text-gray-900 font-bold py-2 px-4 rounded hover:bg-customYellowHover self-start"
+              transition:name={`playlist ${event.link} box`}
+            >
+              CONOCENOS!! &rarr;
+            </a>
+          ) : null}
         </div>
       </div>
     ))}

@@ -24,44 +24,93 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "5");
 // Importa el componente ONGCard
 import ONGCard from "../../components/ONGCard.astro";
 
-// Datos de las ONGs
-const ongs = [
+// Datos de las donadoras
+const donadoras = [
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "La Huella Cafetería",
+    "description": "C. Amparo Mateos Silva, 3 • Brenes, Sevilla. Cafetería de Brenes que en todas las ediciones nos ha donado una riquísima paella de 5kg. Fiel colaboradora desde nuestra primera edición. Este año nos sorprenden con una deliciosa paella vegana que prepararán en directo para apoyar nuestra causa. ¡Ven a disfrutar de su gastronomía solidaria y ayúdanos a recaudar fondos! 💚",
+    image: "/assets/images/donadores/FINANCIADOR 1 2025 (1).png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+      {
+        href: "https://www.instagram.com/cafe.terialahuella",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+      {
+        href: "https://es.kaliskka.es/cafeteria-la-huella/#",
+        icon: "fab fa-chrome",
+        label: "Web",
+      },
     ],
   },
   {
-    name: "Arte y Ritmo en Vivo",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Copistería económicas",
+    "description": "C. Barrau, 8 • San Bernardo, Sevilla. Copistería Económicas: nos cubren la cartelería y nos apoyan en la difusión. ¡Nuestros colaboradores de siempre! Llevan varias ediciones apoyándonos con la impresión de carteles y material del evento. Fotocopias desde menos de 0,03€ 💰 y siempre acompañados por su perrito adorable que da la bienvenida a la tienda. ¡Gracias por hacer posible nuestro evento! 🐾",
+    image: "/assets/images/donadores/FINANCIADOR 1 2025 (2).png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+      {
+        href: "mailto:copisteriaeconomicas@gmail.com",
+        icon: "fas fa-envelope",
+        label: "Email",
+      },
+    ],
+  },
+];
+
+// Datos de las Colaboradores
+const colaboradores = [
+  {
+    name: "Jalea Demente",
+    description:
+      "Jalea Demente impulsa el desarrollo personal y profesional mediante educación no formal. Creamos experiencias colaborativas donde la actitud multiplica habilidades. Equipo multidisciplinar: Pablo Ginés (ingeniero, mentor innovación), Carlos Otero (educador ambiental, análisis estratégico) y Pepe Pizarro (emprendedor social, liderazgo). ¡Atrévete a descubrirte!",
+    image: "/assets/images/colaboradores/30.png",
+    socialLinks: [
+      {
+        href: "https://www.instagram.com/jaleademente",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
+      {
+        href: "https://www.linkedin.com/company/jaleademente/",
+        icon: "fab fa-linkedin",
+        label: "linkedin",
+      },
     ],
   },
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Sevision",
+    description:
+      "Es el silbato social de Sevilla. Apoyando a cada manifestación que no tenga medios de comunicación para convocar o pedir justicia.",
+    image: "/assets/images/colaboradores/31.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
     ],
-  }
+  },
+  {
+    name: "Distrito de San Pablo- Santa Justa",
+    description:
+      "Nos han cedido el espacio, nos han facilitado parte de la logística y nos han apoyado en la difusión del evento.",
+    image: "/assets/images/colaboradores/32.png",
+    socialLinks: [
+    ],
+  },
+];
+
+// Datos de las VOLUNTARIADO
+const voluntariado = [
+  {
+    name: "Grupo Scout Habitados 575",
+    description:
+      "Movimiento juvenil educativo fundado en 2010 en Sevilla. Promovemos educación en valores mediante el Método Scout: compromiso social, respeto al medio ambiente, servicio a los demás y desarrollo integral. Formamos personas comprometidas para dejar el mundo mejor de lo que lo encontramos. 🏕️",
+    image: "/assets/images/colaboradores/26.png",
+    socialLinks: [
+    ],
+  },
 ];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
   <div
-    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden "
+    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden"
     transition:name=`playlist ${playlist?.id} box`
   >
     <PageHeader />
@@ -91,32 +140,49 @@ const ongs = [
       </div>
     </div>
 
-    <!-- Sección de ONGs -->
-    <!-- <div class="px-6 py-12">
-      <h2 class="text-4xl font-bold text-customYellow mb-8">Equipo</h2>
+    <!-- Sección de Donadores -->
+    <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">Donadoras</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {ongs.map((ong) => (
-          <ONGCard {...ong} />
-        ))}
+        {donadoras.map((donadora) => <ONGCard {...donadora} />)}
+      </div>
+    </div>
+
+    <!-- Sección de Colaboradores -->
+    <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">Colaboradores</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {colaboradores.map((colaborador) => <ONGCard {...colaborador} />)}
+      </div>
+    </div>
+
+    <!-- Sección de Voluntariado -->
+    <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">Voluntariado</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {voluntariado.map((voluntario) => <ONGCard {...voluntario} />)}
+      </div>
+    </div>
+
+    <!-- <div class="px-6 py-12 text-center">
+      <h2 class="text-4xl font-bold text-customYellow mb-6">
+        Estamos trabajando en ello
+      </h2>
+      <p class="text-lg text-gray-300 mb-8">
+        Estamos preparando esta sección para ti. Mientras tanto, disfruta de
+        esta imagen de un perro gracioso 🐶.
+      </p>
+      <div class="flex justify-center">
+        <img
+          src="/assets/images/perro_trabajando.jpg"
+          alt="Perro gracioso esperando"
+          class="rounded-lg shadow-lg max-w-md"
+        />
       </div>
     </div> -->
 
-    <div class="px-6 py-12 text-center">
-  <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
-  <p class="text-lg text-gray-300 mb-8">
-    Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
-  </p>
-  <div class="flex justify-center">
-    <img
-      src="/assets/images/perro_trabajando.jpg" 
-      alt="Perro gracioso esperando"
-      class="rounded-lg shadow-lg max-w-md"
-    />
-  </div>
-</div>
-
     <div
-      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
+      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b"
       style=`--context-color:${playlist?.color.accent}`
     >
       <div

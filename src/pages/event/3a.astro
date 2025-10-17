@@ -24,44 +24,49 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "3");
 // Importa el componente ONGCard
 import ONGCard from "../../components/ONGCard.astro";
 
-// Datos de las ONGs
-const ongs = [
+// Datos de las comida
+const comidas = [
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
-    socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
-    ],
+    name: "Paella",
+    description:
+      "Deliciosa paella 100% vegetal con verduras frescas de temporada, especias aromáticas y el auténtico sabor mediterráneo. Un festín de colores y sabores que conquista hasta los paladares más exigentes. ¡Una opción saludable y llena de sabor! 💚",
+    image: "/assets/images/comida/1.jpg",
+    socialLinks: [],
   },
   {
-    name: "Arte y Ritmo en Vivo",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
-    socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
-    ],
+    name: "Migas",
+    description:
+      "Deliciosas migas tradicionales reinventadas con verduras frescas, ajo, pimentón y aceite de oliva. Un plato reconfortante y lleno de sabor, 100% vegetal que rinde homenaje a la cocina de siempre. ¡Auténtica tradición con toque veggie! 🫒",
+    image: "/assets/images/comida/2.jpg",
+    socialLinks: [],
   },
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
-    socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
-    ],
-  }
+    name: "Garbanzos",
+    description:
+      "Deliciosos garbanzos cocinados con verduras frescas y especias aromáticas. Un plato lleno de proteína vegetal, sabor tradicional y nutrición. Rico, saludable y 100% vegetal. ¡Comfort food que alimenta cuerpo y alma! 💚",
+    image: "/assets/images/comida/3.jpg",
+    socialLinks: [],
+  },
+  {
+    name: "Picoteo: patatas, altramuces, aceitunas",
+    description:
+      "Disfruta de un auténtico picoteo mediterráneo: patatas aliñadas, altramuces salados y aceitunas de la tierra. Sabores sencillos que evocan tradición y buena compañía. ¡El acompañamiento perfecto para cualquier momento! 🌞",
+    image: "/assets/images/comida/4.jpg",
+    socialLinks: [],
+  },
+  {
+    name: "Cerveza, zumos, refrescos, rebujito",
+    description:
+      "Disfruta de cerveza fría, zumos, refrescos burbujeantes y el auténtico rebujito andaluz. ¡La combinación perfecta para refrescarte y disfrutar del evento! Bebidas para todos los gustos y momentos. 🍹✨",
+    image: "/assets/images/comida/5.jpg",
+    socialLinks: [],
+  },
 ];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
   <div
-    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden "
+    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden"
     transition:name=`playlist ${playlist?.id} box`
   >
     <PageHeader />
@@ -91,32 +96,33 @@ const ongs = [
       </div>
     </div>
 
-    <!-- Sección de ONGs -->
-    <!-- <div class="px-6 py-12">
+    <!-- Sección de comida -->
+    <div class="px-6 py-12">
       <h2 class="text-4xl font-bold text-customYellow mb-8">Comida y Bebida</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {ongs.map((ong) => (
-          <ONGCard {...ong} />
-        ))}
+        {comidas.map((comida) => <ONGCard {...comida} />)}
+      </div>
+    </div>
+
+    <!-- <div class="px-6 py-12 text-center">
+      <h2 class="text-4xl font-bold text-customYellow mb-6">
+        Estamos trabajando en ello
+      </h2>
+      <p class="text-lg text-gray-300 mb-8">
+        Estamos preparando esta sección para ti. Mientras tanto, disfruta de
+        esta imagen de un perro gracioso 🐶.
+      </p>
+      <div class="flex justify-center">
+        <img
+          src="/assets/images/perro_trabajando.jpg"
+          alt="Perro gracioso esperando"
+          class="rounded-lg shadow-lg max-w-md"
+        />
       </div>
     </div> -->
 
-    <div class="px-6 py-12 text-center">
-  <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
-  <p class="text-lg text-gray-300 mb-8">
-    Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
-  </p>
-  <div class="flex justify-center">
-    <img
-      src="/assets/images/perro_trabajando.jpg" 
-      alt="Perro gracioso esperando"
-      class="rounded-lg shadow-lg max-w-md"
-    />
-  </div>
-</div>
-
     <div
-      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
+      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b"
       style=`--context-color:${playlist?.color.accent}`
     >
       <div

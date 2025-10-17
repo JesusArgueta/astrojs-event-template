@@ -15,7 +15,7 @@ import { playlists } from "../lib/marcas";
         <div class="p-4 w-2/3 flex flex-col justify-between">
           <div class="flex flex-col">
             <h3 class="text-xl font-semibold mb-2" transition:name={`playlist ${event.id} title`}>{event.title}</h3>
-            <p class="text-sm text-gray-400 mb-4">{event.description}</p>
+            <p class="text-base md:text-lg text-gray-300 mb-4 leading-relaxed drop-shadow-sm hover:text-gray-200 transition-colors duration-200">{event.description}</p>
           </div>
           {event.link && event.link.trim() ? (
             <a 

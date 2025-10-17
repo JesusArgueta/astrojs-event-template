@@ -24,44 +24,54 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "6");
 // Importa el componente ONGCard
 import ONGCard from "../../components/ONGCard.astro";
 
-// Datos de las ONGs
-const ongs = [
+// Datos de las Sorteos
+const sorteos = [
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Veggie Sevilla",
+    description:
+      "Gran donación! Una tablet nueva para niñas y un bolso Guess. Veggie Sevilla demuestra su compromiso social apoyando la educación y la infancia. ¡Gracias por vuestra solidaridad! 💚",
+    image: "/assets/images/sorteos/4.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
     ],
   },
   {
-    name: "Arte y Ritmo en Vivo",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Real Betis Balompié",
+    description:
+      "¡Gran sorteo! Gana una camiseta oficial del Betis firmada por los jugadores. Participa y consigue este recuerdo único de tu equipo del alma. ¡Mucha suerte, béticos! ⚪💚",
+    image: "/assets/images/sorteos/2.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
     ],
   },
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Sevilla FC - Sorteo Exclusivo",
+    description:
+      "¡Sorteo especial! Gana una camiseta oficial del Sevilla FC firmada por toda la plantilla. Participa y llévate este recuerdo único de tus jugadores favoritos. ¡Mucha suerte, sevillistas! 🏆",
+    image: "/assets/images/sorteos/3.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
     ],
-  }
+  },
+  {
+    name: "Museo de las Ilusiones",
+    description:
+      "¡Participa en nuestro sorteo y gana entradas para el Museo de las Ilusiones! Vive una experiencia única llena de magia, diversión y percepciones sorprendentes. ¡No te lo pierdas! ✨",
+    image: "/assets/images/sorteos/1.png",
+    socialLinks: [
+    ],
+  },
+  {
+    name: "Hotty Doggy",
+    description:
+      "¡Premio especial! Cena romántica para 2 personas: entrante, 2 perritos de especialidad, 2 bebidas y postre a compartir. Disfruta de una velada deliciosa y diferente. ¡Perfecto para una cita inolvidable! 💫",
+    image: "/assets/images/sorteos/5.png",
+    socialLinks: [
+    ],
+  },
 ];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
   <div
-    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden "
+    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden"
     transition:name=`playlist ${playlist?.id} box`
   >
     <PageHeader />
@@ -92,31 +102,32 @@ const ongs = [
     </div>
 
     <!-- Sección de ONGs -->
-    <!-- <div class="px-6 py-12">
+    <div class="px-6 py-12">
       <h2 class="text-4xl font-bold text-customYellow mb-8">Sorteos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {ongs.map((ong) => (
-          <ONGCard {...ong} />
-        ))}
+        {sorteos.map((sorteo) => <ONGCard {...sorteo} />)}
+      </div>
+    </div>
+
+    <!-- <div class="px-6 py-12 text-center">
+      <h2 class="text-4xl font-bold text-customYellow mb-6">
+        Estamos trabajando en ello
+      </h2>
+      <p class="text-lg text-gray-300 mb-8">
+        Estamos preparando esta sección para ti. Mientras tanto, disfruta de
+        esta imagen de un perro gracioso 🐶.
+      </p>
+      <div class="flex justify-center">
+        <img
+          src="/assets/images/perro_trabajando.jpg"
+          alt="Perro gracioso esperando"
+          class="rounded-lg shadow-lg max-w-md"
+        />
       </div>
     </div> -->
 
-    <div class="px-6 py-12 text-center">
-  <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
-  <p class="text-lg text-gray-300 mb-8">
-    Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
-  </p>
-  <div class="flex justify-center">
-    <img
-      src="/assets/images/perro_trabajando.jpg" 
-      alt="Perro gracioso esperando"
-      class="rounded-lg shadow-lg max-w-md"
-    />
-  </div>
-</div>
-
     <div
-      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
+      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b"
       style=`--context-color:${playlist?.color.accent}`
     >
       <div

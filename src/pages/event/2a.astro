@@ -24,44 +24,85 @@ const playlist = allPlaylists.find((playlist) => playlist.id === "2");
 // Importa el componente ONGCard
 import ONGCard from "../../components/ONGCard.astro";
 
-// Datos de las ONGs
-const ongs = [
+// Datos de los artistas
+const artistas = [
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Fi",
+    description:
+      "Fi, una de las artistas que participará como Cantante tributo a Taylor Swift y Sabrina Carpenter.",
+    image: "/assets/images/artistas/5.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+      {
+        href: "https://www.instagram.com/filirinelg",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
     ],
   },
   {
-    name: "Arte y Ritmo en Vivo",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Rikotta de Selen",
+    description:
+      "Originaria de Granada, Rikotta de Selen creció en un ambiente donde la música y el arte formaban parte su día a día. Desde pequeña, el canto ha sido su gran pasión, desarrollando su voz y explorando distintos estilos a lo largo de los años. Actualmente apuesta por el reggaeton acumulando más de 1000 oyentes mensuales en Spotify y ya está barajando la posibilidad de sorprender a sus oyentes con nuevos estilos musicales ",
+    image: "/assets/images/artistas/3.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+      {
+        href: "https://youtube.com/@rikottadeselen?si=DzY1XdlmWH6Kim8a",
+        icon: "fab fa-youtube",
+        label: "youtube",
+      },
+      {
+        href: "https://www.tiktok.com/@larikottta",
+        icon: "fab fa-tiktok",
+        label: "tiktok",
+      },
+      {
+        href: "https://open.spotify.com/artist/3oSpZHknygyesxqXYJnl1z?si=WHZGYGUHQQSo0qvu-hhj-g",
+        icon: "fab fa-spotify",
+        label: "spotify",
+      },
+      {
+        href: "https://www.instagram.com/arikottta  ",
+        icon: "fab fa-instagram",
+        label: "Instagram",
+      },
     ],
   },
   {
-    name: "Aroa",
-    description: "La protectora a la que destinamos todos los beneficios del festival. Tendrá un puestecito donde podrás conocer su labor de rescate y adopción, además de colaborar comprando algunos de sus productos solidarios.",
-    image: "/assets/images/Logo/LOGO_NEGATIVO.png",
+    name: "Lucilla charla educadora canina",
+    description:
+      "Descubre los secretos de una relación perfecta con tu mejor amigo. Lucilla, educadora canina profesional, ofrece una charla inspiradora sobre comunicación y convivencia humano-perro. Aprende, comprende y conecta con tu compañero de cuatro patas. ¡Una experiencia que transformará vuestra vida juntos! 💫",
+    image: "/assets/images/artistas/1.png",
     socialLinks: [
-      { href: "https://www.instagram.com/lasonrisaanimal", icon: "fab fa-instagram", label: "Instagram" },
-      { href: "https://www.facebook.com/lasonrisaanimal", icon: "fab fa-facebook", label: "Facebook" },
-      { href: "mailto:lasonrisaanimal@gmail.com", icon: "fas fa-envelope", label: "Email" },
+      {
+        href: "https://díasdeperros.es",
+        icon: "fab fa-chrome",
+        label: "web",
+      },
     ],
-  }
+  },
+  {
+    name: "Susana Chamizo Psicóloga",
+    description:
+      "Estará disponible de 10-14h para acompañar en el duelo por la pérdida de nuestros compañeros animales. Si alguien está interesado, puede preguntar al equipo organizador. ",
+    image: "/assets/images/artistas/4.png",
+    socialLinks: [
+
+    ],
+  },
+  {
+    name: "Mía",
+    description:
+      "Dará una clase para iniciación en el yoga gratuita con posibilidad de continuar en un grupo para hacer yoga en parques.",
+    image: "/assets/images/artistas/2.png",
+    socialLinks: [
+    ],
+  },
 ];
 ---
 
 <Layout image={playlist?.cover} title={playlist?.title || "404"}>
   <div
-    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden "
+    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden"
     transition:name=`playlist ${playlist?.id} box`
   >
     <PageHeader />
@@ -91,35 +132,33 @@ const ongs = [
       </div>
     </div>
 
-    <!-- Sección de ONGs -->
-    <!-- <div class="px-6 py-12">
-      <h2 class="text-4xl font-bold text-customYellow mb-8">Escenario Sonrisas</h2>
+    <!-- Sección de Artistas -->
+    <div class="px-6 py-12">
+      <h2 class="text-4xl font-bold text-customYellow mb-8">
+        Escenario Sonrisas
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {ongs.map((ong) => (
-          <ONGCard {...ong} />
-        ))}
+        {artistas.map((artista) => <ONGCard {...artista} />)}
+      </div>
+    </div>
+
+    <!-- Sección de "Estamos trabajando en ello" -->
+    <!-- <div class="px-6 py-12 text-center">
+      <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
+      <p class="text-lg text-gray-300 mb-8">
+        Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
+      </p>
+      <div class="flex justify-center">
+        <img
+          src="/assets/images/perro_trabajando.jpg" 
+          alt="Perro gracioso esperando"
+          class="rounded-lg shadow-lg max-w-md"
+        />
       </div>
     </div> -->
 
-    <!-- Sección de "Estamos trabajando en ello" -->
-<div class="px-6 py-12 text-center">
-  <h2 class="text-4xl font-bold text-customYellow mb-6">Estamos trabajando en ello</h2>
-  <p class="text-lg text-gray-300 mb-8">
-    Estamos preparando esta sección para ti. Mientras tanto, disfruta de esta imagen de un perro gracioso 🐶.
-  </p>
-  <div class="flex justify-center">
-    <img
-      src="/assets/images/perro_trabajando.jpg" 
-      alt="Perro gracioso esperando"
-      class="rounded-lg shadow-lg max-w-md"
-    />
-  </div>
-</div>
-
-
-
     <div
-      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b "
+      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b"
       style=`--context-color:${playlist?.color.accent}`
     >
       <div
